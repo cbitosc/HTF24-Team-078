@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %} ABOUT US {% endblock %}
+
+{% block content %}
+
+<div class="team">
+    <div class="member">
+        <img src="path/to/pranav_image.jpg" alt="Pranav" />
+        <h2>Pranav</h2>
+        <p>I am passionate about games and how the backend of a game is done. I aspire to be a game developer.</p>
+    </div>
+    <div class="member">
+        <img src="" alt="Madhav" />
+        <h2>Madhav</h2>
+        <p>Description</p>
+    </div>
+    <div class="member">
+        <img src=r"D:\Projexts VScode\HTF24-Team-078\website\templates\images\calc.jpg" alt="Ishaan" />
+        <h2>Ishaan Prasad</h2>
+        <p>CSE, Semester 1, CBIT<br>
+
+            I’m a passionate developer and Minecraft server owner, currently managing the McManiac Network, which has engaged over 10,000 unique players. With an 80 WPM typing speed and experience from five MUNs, including one as chair, I’m always looking to challenge myself in both development and technical projects.</p>
+    </div>
+</div>
+
+<p> About us </p>
+
+<style>
+    .team {
+        display: flex;
+        justify-content: space-around; /* Adjusts spacing between items */
+        align-items: center; /* Centers items vertically */
+        margin-top: 20px; /* Adds space above the team section */
+    }
+    .member {
+        text-align: center; /* Centers the text below the image */
+    }
+    .member img {
+        width: 150px; /* Set width for images */
+        height: auto; /* Maintain aspect ratio */
+        border-radius: 50%; /* Optional: Makes images circular */
+    }
+</style>
+
+{% endblock %}

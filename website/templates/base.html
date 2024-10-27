@@ -9,7 +9,61 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <style>
+        .alert-container {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 1050;
+            min-width: 300px;
+            max-width: 400px;
+        }
+        .custom-alert {
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(53, 106, 253, 0.1);
+            margin-bottom: 10px;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideIn 0.5s ease-out;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+            opacity: 0.9;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+            opacity: 0.9;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .close-btn {
+            background: none;
+            border: none;
+            color: inherit;
+            padding: 0 0 0 15px;
+            font-size: 1.25rem;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+        .close-btn:hover {
+            opacity: 1;
+        }
         body {
+            overflow-x: hidden;
+            overflow-y: scroll;
             background-color: #f8f9fa;
             font-family: Arial, sans-serif;
         }
@@ -111,6 +165,9 @@
         .btn-login:hover {
             transform: translateY(-2px);
         }
+        button.btn{
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
@@ -138,12 +195,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/about"><button class="btn btn-custom">ABOUT US</button></a>
                     </li>
+                    {%block nav_but%}
                     <li class="nav-item">
                         <a class="nav-link" href="/ptlogin"><button class="btn btn-login patlogin">PATIENT LOGIN</button></a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/ptsignup"><button class="btn btn-login patlogin">PATIENT SIGN-UP</button></a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/dclogin"><button class="btn btn-login docrlogin">DOCTOR LOGIN</button></a>
                     </li>
+                    {%endblock%}
                     <li class="nav-item">
                         <a class="nav-link" href="/contact"><button class="btn btn-custom">CONTACT US</button></a>
                     </li>
@@ -152,21 +214,18 @@
         </div>
     </nav>
 
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %} {% if category == 'error' %}
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      {{ message }}
-      <button type="button" class="close" data-dismiss="alert">
-        <span aria-hidden="true">&times;</span>
-      </button>
+
+<br>
+{% if session.get('message') %}
+    <div class="alert-container">
+        <div class="custom-alert alert-{{ 'danger' if session.message.type == 'error' else 'success' }}">
+            <span>{{ session.message.text }}</span>
+            <button type="button" class="close-btn" onclick="this.parentElement.remove()">×</button>
+        </div>
     </div>
-    {% else %}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      {{ message }}
-      <button type="button" class="close" data-dismiss="alert">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    {% endif %} {% endfor %} {% endif %} {% endwith %}
+    {{ session.pop('message', None) }}
+    {% endif %}
+
 
     <!-- Main Content -->
     <div class="container mt-4 d-flex align-items-center" style="min-height: 80vh;">

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}<title>Patient Portal</title>{%endblock%}
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #f4f6f9; /* Light background for the entire page */
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            background-color: #2980b9;
+            padding-top: 20px;
+            color: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            border-radius: 0 20px 20px 0; /* Rounded corners */
+        }
+
+        .sidebar-button {
+            width: 100%;
+            padding: 15px 20px;
+            text-align: left;
+            color: white;
+            background: none;
+            border: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-button:hover {
+            background-color: #2baaff;
+            transform: translateX(5px);
+        }
+
+        .sidebar-button.active {
+            background-color: #2baaff;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .welcome-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+        }
+
+        .card {
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            transition: transform 0.2s; /* Smooth transition for hover effect */
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2980b9;
+            color: white;
+        }
+
+        /* Empty column style */
+        .empty-cell {
+            background-color: #f9f9f9; /* Light gray background for empty cells */
+            pointer-events: none; /* Prevent interaction */
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                margin-left: -250px;
+                transition: margin-left 0.3s;
+            }
+            .sidebar.active {
+                margin-left: 0;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="d-flex justify-content-center mb-4">
+            <h3>Patient Portal</h3>
+        </div>
+        <div class="d-flex flex-column">
+            <button class="sidebar-button active" type="button" onclick="location.href='/user/dashboard'">
+                <i class="fas fa-tachometer-alt"></i>
+                Dashboard
+            </button>
+            <button class="sidebar-button" type="button" onclick="location.href='/user/dashboard/chat'">
+                <i class="fas fa-comments"></i>
+                PMI AI ChatBot
+            </button>
+            <button class="sidebar-button" type="button" onclick="location.href='/user/dashboard/logger'">
+                <i class="fas fa-comments"></i>
+                Symptom Logger
+            </button>
+            <button class="sidebar-button" type="button" onclick="location.href='/user/dashboard/track'">
+                <i class="fas fa-comments"></i>
+                Medicine Tracking
+            </button>
+            <button class="sidebar-button" type="button" onclick="location.href='/logout'">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            {% block content %}
+            <div class="welcome-section">
+                <h2 class="text-primary">Welcome, John Doe!</h2>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="row mb-4">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card text-white bg-primary">
+                        <div class="card-body">
+                            <h5 class="card-title">Upcoming Appointments</h5>
+                            <p class="card-text display-4">Nil</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card text-white bg-success">
+                        <div class="card-body">
+                            <h5 class="card-title">Prescriptions</h5>
+                            <p class="card-text display-4">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patient Side List for Health Parameters -->
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Patient Side List for Health Parameters</h5>
+                        </div>
+                        <div class="card-body">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Blood Parameters</th>
+                                        <td class="empty-cell"></td>
+                                        <td class="empty-cell"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Physical Parameters</th>
+                                        <td class="empty-cell"></td>
+                                        <td class="empty-cell"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Allergies</th>
+                                        <td class="empty-cell"></td>
+                                        <td class="empty-cell"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Alcohol/Smoking History</th>
+                                        <td class="empty-cell"></td>
+                                        <td class="empty-cell"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Medicines Prescribed</th>
+                                        <td class="empty-cell"></td>
+                                        <td class="empty-cell"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Remarks</th>
+                                        <td class="empty-cell"></td>
+                                        <td class="empty-cell"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endblock%}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Add active class to current page's button
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.sidebar-button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

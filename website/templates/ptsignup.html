@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %} Patient Signup {% endblock %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <h2>Patient Signup</h2>
+    <form action="/ptsignup" method="POST"> 
+        <div class="form-group">
+            <label for="username">Phone Number:</label>
+            <input type="text" class="form-control" id="username" name="phno" required>
+        </div>
+        <div class="form-group">
+            <label for="username">Name:</label>
+            <input type="text" class="form-control" id="username" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password1" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Re-enter Password:</label>
+            <input type="password" class="form-control" id="password" name="password2" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+{%endblock%}

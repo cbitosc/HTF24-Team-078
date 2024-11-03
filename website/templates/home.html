@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<style>
+    /* Additional styles for a better layout */
+    body {
+        font-family: 'Arial', sans-serif; /* Modern font */
+    }
+    .hero {
+        background: #e9ecef;
+        padding: 80px 0;
+        margin-bottom: 40px;
+    }
+    .feature-icon {
+        font-size: 3rem;
+        color: #007bff;
+    }
+    .testimonial {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 5px;
+    }
+    .testimonial-section {
+        background-color: #f0f4ff; /* Light blue background */
+        padding: 40px 0;
+        border-radius: 5px;
+    }
+    .header-title {
+        font-family: 'Helvetica Neue', sans-serif; /* More modern font */
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #333;
+    }
+    .header-description {
+        font-size: 1.25rem;
+        color: #555;
+    }
+    .key-feature-title {
+        font-size: 1.5rem; /* Modern font size for feature titles */
+        font-weight: 600; /* Semi-bold for emphasis */
+        color: #333; /* Dark color for contrast */
+    }
+    .key-feature-description {
+        font-size: 1rem; /* Adjusted font size for descriptions */
+        color: #777; /* Softer color for less emphasis */
+    }
+    .faq-header {
+        cursor: pointer;
+    }
+</style>
+
+<br><br><br><br><br><br>
+<!-- Welcome Section -->
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/028/287/555/small_2x/an-indian-young-female-doctor-isolated-on-green-ai-generated-photo.jpg" alt="Doctor" class="img-fluid rounded">
+        </div>
+        <div class="col-md-6">
+            <h1 class="header-title">Welcome to Hackstreet PMS</h1>
+            <p class="header-description">Your trusted platform for managing health effectively. Schedule appointments, access medical records, and communicate with healthcare professionals seamlessly.</p>
+        </div>
+    </div>
+
+    <br><br><br><br>
+
+    <!-- Key Features Section -->
+    <h2 class="text-center mt-5">Our Key Features</h2>
+    <div class="row text-center mt-4">
+        <div class="col-md-3">
+            <img src="https://i.ibb.co/XX0P483/a-strong-internet-presence.png" alt="AI-Based Chatbot" class="img-fluid rounded">
+            <p class="mt-3 key-feature-title">AI-Based Summary</p>
+            <p class="key-feature-description">Get instant support for your health queries, symptom checks, and more—24/7 assistance at your fingertips.</p>
+        </div>
+        <div class="col-md-3">
+            <img src="https://i.ibb.co/F5NczTs/an-outstanding-online-reputation.png" alt="Real-Time Health Monitoring" class="img-fluid rounded">
+            <p class="mt-3 key-feature-title">Real-Time Health Monitoring</p>
+            <p class="key-feature-description">Keep track of your vital signs and health parameters in real-time for timely interventions when necessary.</p>
+        </div>
+        <div class="col-md-3">
+            <img src="https://i.ibb.co/tKXCPLZ/solidify-the-patient-experience.png" alt="Comprehensive Patient Profile" class="img-fluid rounded">
+            <p class="mt-3 key-feature-title">Comprehensive Patient Profile</p>
+            <p class="key-feature-description">Easily manage an organized profile of your health history, allergies, and current medications for quick access.</p>
+        </div>
+        <div class="col-md-3">
+            <img src="https://i.ibb.co/2MHzPnW/a-satisfied-and-loyal-patient-base.png" alt="Data Security and Privacy" class="img-fluid rounded">
+            <p class="mt-3 key-feature-title">Data Security and Privacy</p>
+            <p class="key-feature-description">Enjoy peace of mind knowing your data is safeguarded with top-tier security protocols.</p>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!-- Testimonials Section -->
+    <div class="testimonial-section">
+        <h2 class="text-center mt-5">What Our Users Say</h2>
+        <div class="row text-center mt-4">
+            <div class="col-md-4">
+                <div class="testimonial">
+                    <p class="mb-0">“Hackstreet PMS transformed my healthcare experience. The AI chatbot is a lifesaver!”</p>
+                    <footer class="blockquote-footer">AI Jane Doe, Patient</footer>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial">
+                    <p class="mb-0">“The real-time health monitoring feature gives me peace of mind.”</p>
+                    <footer class="blockquote-footer">Dr. AI Smith, Healthcare Provider</footer>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial">
+                    <p class="mb-0">“I love how organized my health records are. Highly recommend!”</p>
+                    <footer class="blockquote-footer">AI John Maine, Patient</footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white mt-5 p-4 text-center">
+    <div class="container">
+        <p class="mb-0">Hackstreet PMS, Pioneer in Patient Management.</p>
+        <p><a class="nav-link" href="/contact">Click here to CONTACT US</a></p>
+    </div>
+</footer>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %} Patient Details {% endblock %}
+
+{%block nav_but%}
+<li class="nav-item">
+    <a class="nav-link" href="/logout"><button class="btn btn-custom">Logout</button></a>
+</li>
+{%endblock%}
+{% block content %}
+<br><br>
+<div class="container">
+    <h2>Patient Details</h2>
+    <form action="/user" method="POST"> 
+        <div class="form-group">
+            <label for="username">Full name:</label>
+            <input type="text" class="form-control" id="fullname" name="fname" required>
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail:
+                <span class="optional-text text-muted">(optional)</span>
+            </label>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help">
+        </div>
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" class="form-control" id="age" name="age" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Gender</label>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="male" name="gender" value="male">
+                <label class="form-check-label" for="male">Male</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="female" name="gender" value="female">
+                <label class="form-check-label" for="female">Female</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="blood_group">Blood Group:</label>
+            <select class="form-control" id="blood_group" name="blood_group" required>
+                <option value="">Select Blood Group</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+            </select>
+        </div>
+        <div class="form-group">
+        <label class="existing">Existing Diseases</textarea>
+            <textarea class="form-control" id="existing" name="existing" rows="2" placeholder="List any known diseases"></textarea>
+        <div class="form-group">
+            <label for="allergies">Known Allergies:</label>
+            <textarea class="form-control" id="allergies" name="allergies" rows="2" placeholder="List any known allergies"></textarea>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </div>
+</form>
+</div>
+{%endblock%}

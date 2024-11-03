@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} Patient login {% endblock %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <h2>Patient Login</h2>
+    <form action="/ptlogin" method="POST">  <!-- Adjust the action URL as needed -->
+        <div class="form-group">
+            <label for="phno">Phone Number:</label>
+            <input type="text" class="form-control" id="username" name="phno" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <p class="mt-3">Don't have an account? <a href="/ptsignup">Sign up here</a>.</p>
+</div>
+{%endblock%}
